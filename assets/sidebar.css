@@ -1,0 +1,108 @@
+/* Sidebar and main layout styles for Task Manager */
+body {
+    background: linear-gradient(135deg, #f8fafc 0%, #e3e9f7 100%);
+    font-family: 'Inter', sans-serif;
+}
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 220px;
+    background: #fff;
+    color: #2c5364;
+    transition: width 0.3s;
+    z-index: 1000;
+    box-shadow: 2px 0 12px rgba(44,83,100,0.08);
+    border-right: 1px solid #e3e9f7;
+    display: flex;
+    flex-direction: column;
+}
+.sidebar.collapsed {
+    width: 60px;
+}
+.sidebar-header {
+    padding: 1.5rem 1rem 1rem 1.5rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #e3e9f7;
+    transition: opacity 0.3s, height 0.3s, padding 0.3s;
+}
+.sidebar.collapsed .sidebar-header span {
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+}
+.toggle-btn {
+    background: none;
+    border: none;
+    color: #2c5364;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-left: 0;
+}
+.sidebar-menu {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 2rem;
+    transition: opacity 0.3s;
+}
+.sidebar.collapsed .sidebar-menu {
+    opacity: 0;
+    pointer-events: none;
+}
+.sidebar-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.sidebar-menu ul li {
+    margin-bottom: 1.2rem;
+}
+.sidebar-menu ul li a {
+    color: #2c5364;
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 0.7rem 1.5rem;
+    display: block;
+    border-radius: 8px 0 0 8px;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+.sidebar-menu ul li a.active, .sidebar-menu ul li a:hover {
+    background: linear-gradient(90deg, #36d1c4 0%, #5b86e5 100%);
+    color: #fff;
+}
+.main-content {
+    margin-left: 220px;
+    padding: 2.5rem 2rem 2rem 2rem;
+    transition: margin-left 0.3s;
+}
+.sidebar.collapsed ~ .main-content {
+    margin-left: 60px;
+}
+.card-glass {
+    background: rgba(255,255,255,0.85);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid #e3e9f7;
+    padding: 2rem;
+}
+@media (max-width: 900px) {
+    .sidebar, .sidebar.collapsed {
+        width: 100vw;
+        height: auto;
+        position: relative;
+    }
+    .main-content, .sidebar.collapsed ~ .main-content {
+        margin-left: 0;
+    }
+}
