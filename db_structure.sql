@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS tasks (
     created_by INT NOT NULL, -- Creator
     title VARCHAR(255) NOT NULL,
     description TEXT,
-    status ENUM('pending', 'completed') DEFAULT 'pending',
+    status ENUM('pending', 'completed', 'in_progress', 'on_hold') DEFAULT 'pending',
     due_date DATE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP NULL,
