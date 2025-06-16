@@ -3,8 +3,9 @@
 if (!isset($activePage))
     $activePage = '';
 require_once '../includes/auth.php';
+require_once '../includes/config.php';
 ?>
-<link href="/task-manager/assets/sidebar.css" rel="stylesheet">
+<link href="<?php echo BASE_URL; ?>/assets/sidebar.css" rel="stylesheet">
 <div class="sidebar" id="sidebar">
     <div class="sidebar-header">
         <span>Task Manager</span>
@@ -76,7 +77,7 @@ require_once '../includes/auth.php';
                 </li>
             <?php endif; ?>
             <li>
-                <a href="logout.php" title="Logout">
+                <a href="<?php echo BASE_URL; ?>/pages/logout.php" title="Logout">
                     <span class="sidebar-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24"
                             height="24" fill="#2c5364" viewBox="0 0 24 24" style="display:inline;">
                             <path

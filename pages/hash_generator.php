@@ -1,4 +1,5 @@
 <?php
+require_once '../includes/config.php';
 // Usage: Open this file in your browser and enter a password to get its hash.
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'];

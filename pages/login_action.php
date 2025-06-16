@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once '../includes/db.php';
+require_once '../includes/config.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
@@ -13,14 +14,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($user && password_verify($password, $user['password'])) {
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['username'] = $user['username'];
-        header('Location: /task-manager/pages/dashboard.php');
+        header('Location: ' . BASE_URL . '/pages/dashboard.php');
         exit();
     } else {
-        header('Location: login.php?error=Invalid credentials');
+        header('Location: ' . BASE_URL . '/pages/login.php?error=Invalid credentials');
         exit();
     }
 } else {
-    header('Location: login.php');
+    header('Location: ' . BASE_URL . '/pages/login.php');
     exit();
 }
 ?>

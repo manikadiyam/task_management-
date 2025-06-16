@@ -1,6 +1,7 @@
 <?php
 require_once '../includes/auth.php';
 require_once '../includes/db.php';
+require_once '../includes/config.php';
 
 // Fetch all users for assignment
 $all_users = $pdo->query('SELECT id, username, full_name FROM users')->fetchAll(PDO::FETCH_ASSOC);
@@ -13,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $created_by = $_SESSION['user_id'];
     $stmt = $pdo->prepare('INSERT INTO tasks (user_id, created_by, title, description, due_date) VALUES (?, ?, ?, ?, ?)');
     $stmt->execute([$assigned_user_id, $created_by, $title, $description, $due_date]);
-    header('Location: tasks.php');
+    header('Location: ' . BASE_URL . '/pages/task_add.php');
     exit();
 }
 ?>
@@ -25,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Add Task</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-    <link href="/task-manager/assets/sidebar.css" rel="stylesheet">
+    <link href="<?php echo BASE_URL; ?>/assets/sidebar.css" rel="stylesheet">
     <style>
         .glass-card {
             background: rgba(255, 255, 255, 0.15);

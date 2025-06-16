@@ -1,6 +1,7 @@
 <?php
 require_once '../includes/auth.php';
 require_once '../includes/db.php';
+require_once '../includes/config.php';
 
 $user_id = $_SESSION['user_id'];
 $stmt = $pdo->prepare('SELECT * FROM users WHERE id = ?');

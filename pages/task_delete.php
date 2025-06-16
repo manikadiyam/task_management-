@@ -1,6 +1,7 @@
 <?php
 require_once '../includes/auth.php';
 require_once '../includes/db.php';
+require_once '../includes/config.php';
 
 if (!isset($_GET['id'])) {
     header('Location: tasks.php');

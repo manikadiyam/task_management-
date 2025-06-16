@@ -1,6 +1,7 @@
 <?php
 require_once '../includes/auth.php';
 require_once '../includes/db.php';
+require_once '../includes/config.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
@@ -10,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $stmt = $pdo->prepare('INSERT INTO users (username, email, full_name, password, role) VALUES (?, ?, ?, ?, ?)');
     $stmt->execute([$username, $email, $full_name, $password, $role]);
-    header('Location: users.php');
+    header('Location: ' . BASE_URL . '/pages/user_add.php');
     exit();
 }
 ?>
@@ -22,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Add User</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-    <link href="/task-manager/assets/sidebar.css" rel="stylesheet">
+    <link href="<?php echo BASE_URL; ?>/assets/sidebar.css" rel="stylesheet">
     <style>
         .glass-card {
             background: rgba(255, 255, 255, 0.15);
